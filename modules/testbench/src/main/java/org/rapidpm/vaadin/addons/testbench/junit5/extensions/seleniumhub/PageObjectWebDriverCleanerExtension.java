@@ -14,7 +14,7 @@ import static org.rapidpm.frp.model.Result.success;
 import static org.rapidpm.vaadin.addons.testbench.TestbenchFunctions.webdrivername;
 import static org.rapidpm.vaadin.addons.testbench.junit5.TestbenchExtensionFunctions.removeWebDriver;
 import static org.rapidpm.vaadin.addons.testbench.junit5.TestbenchExtensionFunctions.webdriver;
-import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.ExtensionFunctions.*;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.ExtensionFunctions.store;
 
 /**
  *
@@ -32,10 +32,10 @@ public class PageObjectWebDriverCleanerExtension implements AfterEachCallback, H
         matchCase(() -> failure("could not map driver to impl class " + webdrivername().apply(webDriver))),
         matchCase(() -> webDriver instanceof RemoteWebDriver, () -> success(((RemoteWebDriver) webDriver).getSessionId().toString())),
         matchCase(() -> webDriver instanceof TestBenchDriverProxy,
-                  () -> success(
-                      ((RemoteWebDriver)
-                          ((TestBenchDriverProxy) webDriver).getActualDriver())
-                          .getSessionId().toString())
+            () -> success(
+                ((RemoteWebDriver)
+                    ((TestBenchDriverProxy) webDriver).getActualDriver())
+                    .getSessionId().toString())
         )
     ).ifPresentOrElse(
         success -> store().apply(context).put(SESSION_ID, success),
