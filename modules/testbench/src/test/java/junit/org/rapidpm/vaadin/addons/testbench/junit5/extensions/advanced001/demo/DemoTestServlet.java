@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
  *
  */
 @WebServlet(
-    urlPatterns = "/advanced001",
+    urlPatterns = "/advanced",
     name = "JumpstartServlet",
     displayName = "JumpstartServlet",
     asyncSupported = true,

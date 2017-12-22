@@ -33,6 +33,12 @@ public abstract class AbstractVaadinPageObject
     getDriver().get(url);
   }
 
+  public void loadPage(String subpath) {
+    final String url = url().get() + subpath;
+    getDriver().get(url);
+  }
+
+
   public WithID<TextFieldElement> textField() {
     return id -> $(TextFieldElement.class).id(id);
   }

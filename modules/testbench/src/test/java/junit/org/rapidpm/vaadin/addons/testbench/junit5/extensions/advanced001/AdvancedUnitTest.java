@@ -14,7 +14,7 @@ public class AdvancedUnitTest {
 
   @Test
   void test001(@PageObject DemoTestPageObject pageObject) {
-    pageObject.loadPage();
+    pageObject.loadPage("advanced");
     pageObject.tfSurname.get().setValue("Vaadin");
     pageObject.button.get().click();
     pageObject.screenshot();
